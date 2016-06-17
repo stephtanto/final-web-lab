@@ -1,5 +1,21 @@
-<div class="jumbotron text-center">
-	<h1>Projects!</h1>
-
-	<p>{{ tagline }}</p>
-</div>
+<h1>PROJECTS</h1>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th ng-repeat="heading in headings">{{heading}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="project in projects">
+			<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]">
+				<span class="glyphicon glyphicon-stop"></span>
+			</td>
+			<td>{{project.Name}}</td>
+			<td>{{project.AccountingManager}}</td>
+			<td>{{project.Baselinehours}}</td>
+			<td>{{project.ServicesBudget}}</td>
+			<td>{{project.Client}}</td>
+			<td>{{project.ServicesBudgetCurrency}}</td>
+		</tr>
+	</tbody>
+</table>
