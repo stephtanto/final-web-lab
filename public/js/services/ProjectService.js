@@ -12,9 +12,5 @@ angular.module('ProjectService', []).factory('Project', ['$http', function ($htt
             return $http.get('http://stephaniewebapi.azurewebsites.net/Projects/' + id);
         },
 
-        addProject: function(p) {
-            return $http.post('http://localhost:56782/Projects', p);
-        }
-
     };
 }]);

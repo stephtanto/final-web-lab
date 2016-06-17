@@ -1,12 +1,13 @@
 angular.module('ProjectDetailsCtrl', []).controller('ProjectDetailsController',['$scope', 'Project', '$routeParams', function($scope, Project, $routeParams) {
+	var projectId = $routeParams.id;
 
-	$scope.tagline = 'The square root of life is pi!';
-
-	Project.getDetails($routeParams.id).then(function(response) {
+	Project.getDetails(projectId).then(function(response) {
 		console.log("Here");
-        $scope.result = response.data;
+        $scope.project = response.data;
         console.log(response.data);
     }, function(error) {
         console.log('opsssss' + error);
     });
+
+
 }]);

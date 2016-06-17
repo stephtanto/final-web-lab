@@ -1,4 +1,4 @@
-angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project', function($scope, Project) {
+angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project','$location', function($scope, Project, $location) {
 
 	$scope.headings = ["Status","Project Name", "AM", "Baseline Hours", "Budget", "Client", "Currency"];
 	$scope.projects = [];
@@ -8,8 +8,11 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 	Project.get().then(function(response) {
         $scope.projects = response.data;
         $scope.numberOfPages = response.data.length;
-        console.log($scope.result);
     }, function(error) {
         console.log('Error:' + err);
     });
+
+    $scope.go = function ( path ) {
+		$location.path( path );
+    };
 }]);

@@ -6,7 +6,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="project in projects | startFrom:currentPage*pageSize | limitTo:pageSize">
+		<tr ng-repeat="project in projects | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
 			<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]">
 				<span class="glyphicon glyphicon-stop"></span>
 			</td>
@@ -19,8 +19,11 @@
 		</tr>
 	</tbody>
 </table>
-    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-        Previous
-    </button>
-    {{currentPage+1}}/{{numberOfPages}}
-    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next</button>
+
+<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+    Previous
+</button>
+{{currentPage+1}}/{{numberOfPages}}
+<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+	Next
+</button>
