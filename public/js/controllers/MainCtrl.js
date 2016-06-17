@@ -1,8 +1,5 @@
-angular.module('MainCtrl', []).controller('MainController',['$scope', 'Geek', function($scope, Geek) {
+angular.module('MainCtrl', []).controller('MainController',['$scope', 'Project', function($scope, Project) {
 
-	$scope.tagline = 'To the moon and back!';	
-	Geek.getAll().then(function(response) {
-			console.log('we got it');
-			console.log(response);
-		});
+	$scope.tagline = 'To the moon and back!';
+	
 }]);
