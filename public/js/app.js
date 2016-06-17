@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'ProjectCtrl', 'ProjectService', 'ProjectDetailsCtrl']);
+angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'ProjectCtrl', 'ProjectService', 'ProjectDetailsCtrl', 'TableDirective']);

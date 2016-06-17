@@ -1,1 +1,16 @@
 body { padding-top:30px; }
+
+.redStatusCode
+{
+	color: #dd1d1d;
+}
+
+.amberStatusCode
+{
+	color: #FFBA00;
+}
+
+.greenStatusCode
+{
+	color: #4b8e19;
+}

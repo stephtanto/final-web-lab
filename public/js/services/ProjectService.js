@@ -1,7 +1,8 @@
 angular.module('ProjectService', []).factory('Project', ['$http', function ($http) {
 	return {
+
         // call to get all data
-        getAll: function () {
+        get: function () {
         	console.log('hi');
             return $http.get('http://stephaniewebapi.azurewebsites.net/Projects');
             //return $http.get('http://localhost:56782/Projects');
@@ -9,7 +10,7 @@ angular.module('ProjectService', []).factory('Project', ['$http', function ($htt
 
         // call to DELETE a project
         getDetails: function (id) {
-            return $http.get('http://localhost:56782/Projects/' + id);
+            return $http.get('http://stephaniewebapi.azurewebsites.net/Projects/' + id);
         },
 
         addProject: function(p) {
