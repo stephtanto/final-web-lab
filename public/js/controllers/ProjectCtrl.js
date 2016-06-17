@@ -8,6 +8,8 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 	$scope.totalPages = 0;
 	$scope.hidePagination = false;
 	$scope.statusList = [];
+	$scope.practiceListNames = [];
+	$scope.practiceListValues = [];
 	$scope.numberOfPages = function(){
 		var size = $scope.totalPages / $scope.pageSize
 		return (size < 1) ? 1 : size;
@@ -18,6 +20,7 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
         $scope.totalPages = response.data.length;
         $scope.numberOfPages();
         generateChart($scope.projects);
+        generatePracticeChart($scope.projects);
     }, function(error) {
         console.log('Error:' + err);
     });
@@ -74,6 +77,28 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     	console.log([statusHash["Red"], statusHash["Amber"], statusHash["Green"], statusHash["Unknown"]]);
     	$scope.statusList = [statusHash["Red"], statusHash["Amber"], statusHash["Green"], statusHash["Unknown"]];
     }
+
+    function getPracticeData(projects) {
+    	var practiceHash = {};
+    	practiceHash["Web"] = 0;
+    	practiceHash["Enterprise"] = 0;
+    	practiceHash["Smart Client"] = 0;
+    	practiceHash["Financial Services"] = 0;
+    	practiceHash["Support"] = 0;
+    	practiceHash["Other"] = 0;
+    	for (var i = 0; i < projects.length; i++) {
+    		if (practiceHash[projects[i].ProjectPractice] == undefined) {
+    			practiceHash["Other"] += 1;
+    		}
+    		else {
+    			practiceHash[projects[i].ProjectPractice] += 1;
+    		}
+    	}
+
+    	$scope.practiceListNames = Object.keys(practiceHash);
+    	$scope.practiceListValues = $scope.practiceListNames.map(function(name) { return practiceHash[name]; })
+    	console.log($scope.practiceListNames);
+    }
     //Chart
 
     function generateChart(projects){
@@ -97,6 +122,24 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 		                '#4b8e19',
 		                'gray'
 		            ],
+		            borderWidth: 1
+		        }]
+		    }
+		});
+    }
+
+     function generatePracticeChart(projects){
+    	getPracticeData(projects);
+    	var ctx = document.getElementById("dataChartPractice");
+		var myChart = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: $scope.practiceListNames,
+		        datasets: [{
+		        	label: "Number of clients",
+		            data: $scope.practiceListValues,
+		            hoverBackgroundColor: 'red',
+		            backgroundColor: 'darkred',
 		            borderWidth: 1
 		        }]
 		    }
