@@ -1,7 +1,8 @@
-angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project', function($scope, Project) {
+angular.module('ProjectDetailsCtrl', []).controller('ProjectDetailsController',['$scope', 'Project', '$routeParams', function($scope, Project, $routeParams) {
 
 	$scope.tagline = 'The square root of life is pi!';
-	Project.getAll().then(function(response) {
+
+	Project.getDetails($routeParams.id).then(function(response) {
 		console.log("Here");
         $scope.result = response.data;
         console.log(response.data);

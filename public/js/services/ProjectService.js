@@ -1,14 +1,19 @@
 angular.module('ProjectService', []).factory('Project', ['$http', function ($http) {
 	return {
         // call to get all data
-        get: function () {
+        getAll: function () {
         	console.log('hi');
-            return $http.get('http://stephaniewebapi.azurewebsites.net/api/projects/');
+            return $http.get('http://stephaniewebapi.azurewebsites.net/Projects');
+            //return $http.get('http://localhost:56782/Projects');
         },
 
         // call to DELETE a project
-        delete: function (id) {
-            return $http.delete('/api/challenges/' + id);
+        getDetails: function (id) {
+            return $http.get('http://localhost:56782/Projects/' + id);
+        },
+
+        addProject: function(p) {
+            return $http.post('http://localhost:56782/Projects', p);
         }
 
     };
