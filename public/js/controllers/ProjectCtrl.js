@@ -46,6 +46,7 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     }
 
     $scope.updateSearch = function(searchText){
+    	$scope.searchText = searchText
     	var projects = filterFilter($scope.projects, searchText);
     	$scope.totalPages = projects.length;
     	$scope.currentPage = 0;
@@ -137,7 +138,7 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 		    data: {
 		        labels: $scope.practiceListNames,
 		        datasets: [{
-		        	label: "Number of clients",
+		        	label: "Number of Projects",
 		            data: $scope.practiceListValues,
 		            hoverBackgroundColor: 'red',
 		            backgroundColor: 'darkred',
