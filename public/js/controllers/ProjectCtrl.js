@@ -49,6 +49,7 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     	var projects = filterFilter($scope.projects, searchText);
     	$scope.totalPages = projects.length;
     	$scope.currentPage = 0;
+    	generateChart(projects)
     	console.log('projects', projects.length);
     }
 
@@ -99,8 +100,8 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     	$scope.practiceListValues = $scope.practiceListNames.map(function(name) { return practiceHash[name]; })
     	console.log($scope.practiceListNames);
     }
-    //Chart
 
+    //Chart
     function generateChart(projects){
     	getStatusData(projects);
     	var ctx = document.getElementById("dataChartStatus");
@@ -145,6 +146,4 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 		    }
 		});
     }
-
-
 }]);

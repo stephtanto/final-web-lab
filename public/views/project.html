@@ -1,5 +1,4 @@
 
-
 <div class="row">
 	<div class="col-xs-6">
 		<canvas id="dataChartStatus" width="300" height="100"></canvas> 
@@ -9,10 +8,13 @@
 	</div>
 </div>
 
+<br>
+<br>
+
 <div class="row">
 	<div class="col-xs-3 pull-right">
-		<label>Search:</label>
-		<input class="form-control" ng-model="searchText" ng-change="updateSearch(searchText)">
+		<input class="form-control" ng-model="searchText">
+		<button type="button" class="btn btn-primary btn-sm" ng-click="updateSearch(searchText)">Search</button>
 	</div>
 	<div class="col-xs-2">
 		<label>Number of Pages: </label>
@@ -20,6 +22,7 @@
 		</select>
 	</div>
 </div>
+<br>
 <div class="row">
 	<div class="col-xs-12">
 		<table class="table table-striped" id="projectTable">
@@ -30,7 +33,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="project in projects | filter: searchText | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
-					<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]">
+					<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]" class="status">
 						<span class="glyphicon glyphicon-stop"></span>
 					</td>
 					<td>{{project.Name}}</td>
