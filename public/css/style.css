@@ -14,3 +14,32 @@ body { padding-top:30px; }
 {
 	color: #4b8e19;
 }
+
+.center { text-align: center;}
+
+#projectTable tbody tr:hover {
+  background-color: rgba(51, 122, 183, 0.62);
+  color: white;
+  cursor: pointer;
+}
+#projectTable tbody tr td:nth-child(1) {
+  width: 5%;
+}
+#projectTable tbody tr td:nth-child(2) {
+  width: 25%;
+}
+#projectTable tbody tr td:nth-child(3) {
+  width: 10%;
+}
+#projectTable tbody tr td:nth-child(4) {
+  width: 15%;
+}
+#projectTable tbody tr td:nth-child(5) {
+  width: 10%;
+}
+#projectTable tbody tr td:nth-child(6) {
+  width: 20%;
+}
+#projectTable tbody tr td:nth-child(7) {
+  width: 5%;
+}
