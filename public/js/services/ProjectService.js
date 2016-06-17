@@ -3,7 +3,6 @@ angular.module('ProjectService', []).factory('Project', ['$http', function ($htt
 
         // call to get all data
         get: function () {
-        	console.log('hi');
             return $http.get('http://stephaniewebapi.azurewebsites.net/Projects');
             //return $http.get('http://localhost:56782/Projects');
         },
