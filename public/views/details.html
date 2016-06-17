@@ -5,6 +5,32 @@
     <h3 class="panel-title">OVERVIEW</h3>
   </div>
   <div class="panel-body">
+    <div class="location">
+      Sales ATU: {{project.SalesATU}}
+    </div>
+    <div class="practive">
+      Practice: {{project.ProjectPractice}}
+    </div>
+    <div class="hours">
+      {{project.TotalHours}} Total Hours / {{project.BaselineHours}} Baseline Hours
+    </div>
+    <div class="startDate">
+      Start Date: {{project.StartDate}}
+    </div>
+    <div class="endDate">
+      End Date: {{project.EndDate}}
+    </div>
+    <div class="workCompletePercent">
+      Work Complete: {{project.WorkCompletePercent}}%
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{project.WorkCompletePercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{project.WorkCompletePercent}}%;">
+          <span class="sr-only">{{project.WorkCompletePercent}}% Complete</span>
+        </div>
+      </div>
+    </div>
+    <div class="projectStage">
+      Project Stage: {{project.ProjectStage}}
+    </div>
     
   </div>
 </div>
@@ -28,5 +54,5 @@
 		</tr>
 	</tbody>
 </table>
-  </div>
+    
 </div>
