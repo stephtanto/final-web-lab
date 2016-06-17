@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-3 pull-right">
 		<label>Search:</label>
-		<input class="form-control" ng-model="searchText">
+		<input class="form-control" ng-model="searchText" ng-change="updateSearch(searchText)">
 	</div>
 	<div class="col-xs-2">
 		<label>Number of Pages: </label>
@@ -39,7 +39,7 @@
 	    Previous
 		</button>
 		Page {{currentPage+1}} of {{numberOfPages()}}
-		<button class="btn btn-primary" ng-disabled="currentPage >= data.length/pageSize - 1 || hidePagination" ng-click="currentPage=currentPage+1">
+		<button class="btn btn-primary" ng-disabled="currentPage >= numberOfPages() - 1 || hidePagination" ng-click="currentPage=currentPage+1">
 			Next
 		</button>
 	</div>

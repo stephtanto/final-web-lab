@@ -1,4 +1,4 @@
-angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project','$location', function($scope, Project, $location) {
+angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project','$location','filterFilter', function($scope, Project, $location, filterFilter) {
 	$scope.model = {};
     $scope.pageOptions = [{value:"5"},{value:"10"},{value:"25"}, {value: "All"}];
 	$scope.headings = ["Status","Project Name", "AM", "Baseline Hours", "Budget", "Client", "Currency"];
@@ -8,7 +8,8 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
 	$scope.totalPages = 0;
 	$scope.hidePagination = false;
 	$scope.numberOfPages = function(){
-		return $scope.totalPages / $scope.pageSize;
+		var size = $scope.totalPages / $scope.pageSize
+		return (size < 1) ? 1 : size;
 	} 
 
 	Project.get().then(function(response) {
@@ -37,5 +38,12 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     		$scope.hidePagination = false;
     	}
     	
+    }
+
+    $scope.updateSearch = function(searchText){
+    	var projects = filterFilter($scope.projects, searchText);
+    	$scope.totalPages = projects.length;
+    	$scope.currentPage = 0;
+    	console.log('projects', projects.length);
     }
 }]);
