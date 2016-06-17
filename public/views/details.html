@@ -1,37 +1,55 @@
-<h1>{{project.Name}}</h1>
+
+
+<h1 class="projectName">{{project.Name}}</h1>
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">OVERVIEW</h3>
   </div>
   <div class="panel-body">
-    <div class="location">
-      Sales ATU: {{project.SalesATU}}
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="location">
+      <label>Sales ATU:</label> {{project.SalesATU}}
     </div>
     <div class="practive">
-      Practice: {{project.ProjectPractice}}
+      <label>Practice:</label> {{project.ProjectPractice}}
     </div>
-    <div class="hours">
-      {{project.TotalHours}} Total Hours / {{project.BaselineHours}} Baseline Hours
     </div>
-    <div class="startDate">
-      Start Date: {{project.StartDate}}
+    <div class="col-xs-3">
+       <div class="hours">
+       <label>Total Hours: </label> {{project.TotalHours}} 
+       <br>
+       <label>Baseline Hours:</label> {{project.BaselineHours}}
+    </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="startDate">
+      <label>Start Date:</label> {{project.StartDate | date:'mediumDate'}}
     </div>
     <div class="endDate">
-      End Date: {{project.EndDate}}
+      <label>End Date:</label> {{project.EndDate | date:'mediumDate'}}
     </div>
-    <div class="workCompletePercent">
-      Work Complete: {{project.WorkCompletePercent}}%
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-xs-12">
+        <label>Project Stage:</label> {{project.ProjectStage}}
+      </div>
+  </div>
+  <div class="row">  
+    <div class="col-xs-3">
+      <label>Work Complete:</label> {{project.WorkCompletePercent}}%
+    </div>
+    <div class="col-xs-9">
       <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="{{project.WorkCompletePercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{project.WorkCompletePercent}}%;">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{project.WorkCompletePercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{project.WorkCompletePercent}}%;">
           <span class="sr-only">{{project.WorkCompletePercent}}% Complete</span>
         </div>
       </div>
     </div>
-    <div class="projectStage">
-      Project Stage: {{project.ProjectStage}}
-    </div>
-    
+  </div>    
   </div>
 </div>
 
@@ -54,5 +72,4 @@
 		</tr>
 	</tbody>
 </table>
-    
 </div>

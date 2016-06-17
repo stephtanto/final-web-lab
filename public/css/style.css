@@ -43,3 +43,11 @@ body { padding-top:30px; }
 #projectTable tbody tr td:nth-child(7) {
   width: 5%;
 }
+
+.projectName{
+	background-color:rgba(33, 150, 243, 0.37);
+}
+
+.status{
+	font-size: 2em;
+}
