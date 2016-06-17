@@ -5,6 +5,28 @@
     <h3 class="panel-title">OVERVIEW</h3>
   </div>
   <div class="panel-body">
-    Panel content
+    
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">TEAM</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+    <thead>
+    	<tr>
+			<th ng-repeat="heading in headings">{{heading}}</th>
+		</tr>
+    </thead>
+	<tbody>
+		<tr ng-repeat="role in project.ActualRoles">
+			<td>{{role.Role}}</td>
+			<td>{{role.Name}}</td>
+			<td>{{role.Hours}}</td>
+		</tr>
+	</tbody>
+</table>
   </div>
 </div>

@@ -1,4 +1,11 @@
 <h1>PROJECTS</h1>
+
+<label>Search: <input ng-model="searchText"></label>
+<label>Number of Pages: </label>
+<select ng-model="pageSize">
+  <option ng-repeat="option in pageOptions">{{option}}</option>
+</select>
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -6,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="project in projects | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
+		<tr ng-repeat="project in projects | filter: searchText | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
 			<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]">
 				<span class="glyphicon glyphicon-stop"></span>
 			</td>

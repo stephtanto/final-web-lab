@@ -1,6 +1,7 @@
 angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Project','$location', function($scope, Project, $location) {
 
 	$scope.headings = ["Status","Project Name", "AM", "Baseline Hours", "Budget", "Client", "Currency"];
+	$scope.pageOptions = [5,10,25, 50];
 	$scope.projects = [];
 	$scope.currentPage = 0;
     $scope.pageSize = 10;
