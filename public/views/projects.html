@@ -1,20 +1,9 @@
-
-<div class="row">
-	<div class="col-xs-6">
-		<canvas id="dataChartStatus" width="300" height="150"></canvas> 
-	</div>
-	<div class="col-xs-6">
-		<canvas id="dataChartPractice" width="300" height="150"></canvas> 
-	</div>
-</div>
-
 <br>
-<br>
-
 <div class="row">
 	<div class="col-xs-3 pull-right">
 		<div class="input-group">
-		   <input type="text" class="form-control" ng-model="typedSearchText">
+		   <input type="text" class="form-control" ng-model="typedSearchText" ng-change="search(typedSearchText)"
+		   placeholder="Search">
 		   <span class="input-group-btn">
 		        <button class="btn btn-default" type="button" ng-click="updateSearch(typedSearchText)">
 		        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -22,14 +11,17 @@
 		   </span>
 		</div>
 	</div>
-	<div class="col-xs-2">
-		<label>Number of Pages: </label>
+	<div class="col-xs-3 numOfPages">
+		<label class="numOfPagesLabel">Show: </label>
 		<select class="form-control" ng-model="selectedPageSize" ng-options="p.value for p in pageOptions" ng-init="selectedPageSize=pageOptions[1]" ng-change="updatePageSettings()">
 		</select>
+		</div>
 	</div>
 </div>
+
 <br>
-<div class="row">
+
+<div class="row" ng-show="isLoaded">
 	<div class="col-xs-12">
 		<table class="table table-striped" id="projectTable">
 			<thead>
@@ -38,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="project in projects | filter: searchText | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
+				<tr ng-repeat="project in filteredProjects | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
 					<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]" class="status">
 						<span class="glyphicon glyphicon-stop"></span>
 					</td>
@@ -52,6 +44,10 @@
 			</tbody>
 		</table>
 	</div>
+</div>
+
+<div class="row" ng-init='load()' ng-hide="isLoaded">
+	<div class="loader"></div>
 </div>
 <div class="row center">
 	<div class="col-xs-12">

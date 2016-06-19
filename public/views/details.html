@@ -1,5 +1,3 @@
-
-
 <h1 class="projectName">{{project.Name}}</h1>
 
 <div class="panel panel-default">
@@ -8,22 +6,22 @@
   </div>
   <div class="panel-body">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-xs-4">
       <div class="location">
       <label>Sales ATU:</label> {{project.SalesATU}}
     </div>
-    <div class="practive">
+    <div class="practice">
       <label>Practice:</label> {{project.ProjectPractice}}
     </div>
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-4">
        <div class="hours">
        <label>Total Hours: </label> {{project.TotalHours}} 
        <br>
        <label>Baseline Hours:</label> {{project.BaselineHours}}
     </div>
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-4">
       <div class="startDate">
       <label>Start Date:</label> {{project.StartDate | date:'mediumDate'}}
     </div>
@@ -39,10 +37,10 @@
       </div>
   </div>
   <div class="row">  
-    <div class="col-xs-3">
+    <div class="col-xs-4">
       <label>Work Complete:</label> {{project.WorkCompletePercent}}%
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-8 pull-right">
       <div class="progress">
         <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{project.WorkCompletePercent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{project.WorkCompletePercent}}%;">
           <span class="sr-only">{{project.WorkCompletePercent}}% Complete</span>

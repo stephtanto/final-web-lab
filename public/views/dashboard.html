@@ -1,0 +1,76 @@
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading" ng-click="showDashboard = !showDashboard">
+    <h3 class="panel-title">Dashboard</h3>
+  </div>
+  <div class="panel-body" ng-show="showDashboard">
+    <div class="row">
+	<div class="col-xs-6">
+		<canvas id="dataChartStatus" width="300" height="150"></canvas> 
+	</div>
+	<div class="col-xs-6">
+		<canvas id="dataChartPractice" width="300" height="150"></canvas> 
+	</div>
+</div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-xs-3 pull-right">
+		<div class="input-group">
+		   <input type="text" class="form-control" ng-model="typedSearchText" ng-change="search(typedSearchText)" placeholder="Search">
+		   <span class="input-group-btn">
+		        <button class="btn btn-default" type="button" ng-click="updateSearch(typedSearchText)">
+		        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		        </button>
+		   </span>
+		</div>
+	</div>
+	<div class="col-xs-3 numOfPages">
+		<label class="numOfPagesLabel">Show: </label>
+		<select class="form-control" ng-model="selectedPageSize" ng-options="p.value for p in pageOptions" ng-init="selectedPageSize=pageOptions[1]" ng-change="updatePageSettings()">
+		</select>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-xs-12">
+		<table class="table table-striped" id="projectTable">
+			<thead>
+				<tr>
+					<th ng-repeat="heading in headings">{{heading}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="project in filteredProjects | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="go('/projects/' + project.Id)">
+					<td ng-class="[{redStatusCode: {{project.State == 'Red'}}}, {greenStatusCode: {{project.State == 'Green'}}}, {amberStatusCode: {{project.State == 'Amber'}}}]" class="status">
+						<span class="glyphicon glyphicon-stop"></span>
+					</td>
+					<td>{{project.Name}}</td>
+					<td>{{project.AccountingManager}}</td>
+					<td>{{project.BaselineHours}}</td>
+					<td>{{project.ServicesBudget}}</td>
+					<td>{{project.Client}}</td>
+					<td>{{project.ServicesBudgetCurrency}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="row center">
+	<div class="col-xs-12">
+		<button class="btn btn-primary" ng-disabled="currentPage == 0 || hidePagination" ng-click="currentPage=currentPage-1">
+	    Previous
+		</button>
+		Page {{currentPage+1}} of {{numberOfPages()}}
+		<button class="btn btn-primary" ng-disabled="currentPage >= numberOfPages() - 1 || hidePagination" ng-click="currentPage=currentPage+1">
+			Next
+		</button>
+	</div>
+	
+</div>

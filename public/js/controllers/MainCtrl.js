@@ -1,7 +1,14 @@
-angular.module('MainCtrl', []).controller('MainController',['$scope', 'Project', function($scope, Project) {
-
-	$scope.tagline = 'To the moon and back!';
-
+angular.module('MainCtrl', []).controller('MainController',['$scope', 'Project', '$location',  function($scope, Project, $location) {
+	var path = $location.path();
+	if (path == '/')
+	{
+		$scope.isDashboardTab = true;
+		$scope.isProjectsTab = false;
+	} else if (path == '/projects')
+	{
+		$scope.isDashboardTab = false;
+		$scope.isProjectsTab = true;
+	}
 	
 
 }]);

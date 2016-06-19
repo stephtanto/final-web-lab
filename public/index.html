@@ -27,21 +27,15 @@
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
+<body ng-app="sampleApp" ng-controller="MainController">
 <div class="container">
 	
 	<!-- HEADER -->
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Portfolionavigator</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/">PROJECTS</a></li>
-			<!-- <li><a href="/nerds">PROJECT MANAGER NOTES</a></li>
-			<li><a href="/geeks">RISKS &amp; ISSUES</a></li> -->
-		</ul>
-	</nav>
-
+	<h1>PortfolioNavigator</h1>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" ng-class="{active:isDashboardTab}"><a href="/" ng-click="isDashboardTab = true; isProjectsTab = false;">DASHBOARD</a></li>
+	  <li role="presentation" ng-class="{active:isProjectsTab}"><a href="/projects" ng-click="isProjectsTab = true; isDashboardTab = false;">PROJECTS</a></li>
+	</ul>
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>
 
