@@ -84,7 +84,6 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     //Search Functionality
     var searchTextTimeout = "";
     $scope.search = function(searchText){
-        console.log('search');
         if (searchTextTimeout) $timeout.cancel(searchTextTimeout);
 
         searchTextTimeout = $timeout(function() {
@@ -99,7 +98,6 @@ angular.module('ProjectCtrl', []).controller('ProjectController',['$scope', 'Pro
     	$scope.totalPages = projects.length;
     	$scope.currentPage = 0;
     	generateChart(projects)
-    	console.log('projects', projects.length);
     }
 
     //Chart Functionality

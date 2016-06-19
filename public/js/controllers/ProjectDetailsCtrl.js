@@ -2,12 +2,10 @@ angular.module('ProjectDetailsCtrl', []).controller('ProjectDetailsController',[
 	var projectId = $routeParams.id;
 	$scope.headings = ["Role", "Name", "Hours"];
 	Project.getDetails(projectId).then(function(response) {
-		console.log("Here");
         $scope.project = response.data;
         defineRoles($scope.project.ActualRoles);
-        console.log(response.data);
     }, function(error) {
-        console.log('opsssss' + error);
+        console.log('Error:' + error);
     });
 
 	var mainRoles = ["Project Manager","Project Coordinator", "Team Lead","Application Architect", "Creative Director", "QA Lead"];
